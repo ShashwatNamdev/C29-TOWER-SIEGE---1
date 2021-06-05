@@ -42,7 +42,7 @@ function setup() {
   block15 = new Block(420,195,30,40);
   //top
   block16 = new Block(390,155,30,40);
-  ball = new Ball(200,195,23);
+  ball = new Polygon(200,195,23);
   holder = new Holder(ball.body,{x:200,y:50});
   
 
