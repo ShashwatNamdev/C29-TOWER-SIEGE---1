@@ -42,8 +42,10 @@ function setup() {
   block15 = new Block(420,195,30,40);
   //top
   block16 = new Block(390,155,30,40);
-  ball = new Polygon(200,195,23);
-  holder = new Holder(ball.body,{x:200,y:50});
+  ball = Bodies.circle(50,200,20);
+  World.add(world,ball);
+
+  holder = new Holder(this.ball,{x:150,y:100});
   
 
 }
@@ -52,14 +54,10 @@ function draw() {
  
   textSize(20);
   fill("lightyellow");
-
-  // console.log(ball.x);
-  // console.log(ball.y);
-  
+  Engine.update(engine);
 
   ground.display();
   stand1.display();
-  
   
   strokeWeight(2);
   stroke(15);
@@ -83,4 +81,15 @@ function draw() {
   block15.display();
   fill("grey");
   block16.display();
+  
+  imageMode(CENTER)
+  image(polygon_img ,ball.position.x,ball.position.y,40,40);
+
+  holder.display();
+}
+function mouseDragged(){
+  Matter.Body.setPosition(this.ball,{x:mouseX,y:mouseY});
+}
+function mouseReleased(){
+  holder.fly();
 }
